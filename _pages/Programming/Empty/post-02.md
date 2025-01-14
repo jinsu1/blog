@@ -1,6 +1,7 @@
 ---
-title: "Example Post: no thumbnail image"
-date: "2023-12-01"
+title: "Example Post: thumbnail exists"
+date: "2023-12-02"
+thumbnail: "/assets/img/thumbnail/bricks.webp"
 ---
 
 # Follow the guidance
