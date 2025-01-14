@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let currentTheme = localStorage.getItem('theme');
     let isDarkMode = false;
 
-    if (currentTheme === 'dark'){
+    if (currentTheme === 'light'){
         isDarkMode = true;
         const themeIcons = document.querySelectorAll(".ico-dark, .ico-light");
 
