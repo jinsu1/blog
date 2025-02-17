@@ -6,7 +6,7 @@ tags:
     - icon
     - etc
 date: "2024-08-01"
-thumbnail: "/assets/img/thumbnail/site.png"
+thumbnail: "/assets/img/thumbnail/site.jpg"
 ---
 
 # <span style="color:#616161; font-weight:bold;">유용한 사이트 모음 </span>

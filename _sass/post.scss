@@ -440,7 +440,7 @@ main {
   img {
     display:block;
     width:100%;
-    // aspect-ratio:1.5/1;
+    aspect-ratio:1.5/1;
     transition:.3s;
   }
 
@@ -574,6 +574,10 @@ main {
   padding-top:0;
   font-size:1.125rem;
 
+  p img{
+    width:100%;
+  }
+
   h1, .sh1 {
     font-size:2.25rem;
     margin-top:5rem;
@@ -628,6 +632,11 @@ main {
 
 .top-arrow { left:calc(#{$sidebarwd} + var(--pagewidth-desktop) - 4rem); }
 
+  main {
+    p img{
+      width:100%;
+    }
+  }
 }
 
 @include mq(wide){
@@ -636,4 +645,9 @@ main {
 
 .top-arrow { left:calc(50vw + #{$contentwd}/2 - 4rem); }
 
+  main {
+    p img{
+      width:100%;
+    }
+  }
 }
