@@ -19,7 +19,11 @@ mac 기준, cafe24의 onsweb교과서 스킨 기준으로 기록
 ## <span style="color:#ffa59c; font-weight:bold;">배너매니저 설치 및 사용</span>
 -배너의 간편한 관리를 도와주는 앱
 -설치방법 : cafe24 - 앱(왼쪽 탭 맨아래 두번째) - 마이앱 - 앱스토어 바로가기 - 배너매니저 설치
--사용 : 프로젝트 코드 - '기본' 스크립트 코드 복사 - 디자인편집 - 기존 배너매니저 스크립트 교체 (main.html, layout.html)
+-배너 매니저 > 관리하기 > 배너그룹 추가 > 코드명에 코드입력(배너 활성화시 코드명 필요) > 나머지도 입력
+-배너 이미지 등 입력
+-프로젝트 코드 클릭 하여 코드 복사 > 메인레이아웃 및 공통레이아웃(기본) 배너매니저 코드 수정 > 메인페이지에서 배너 영역 파일열기(main_bnr.html) >
+df-banner-code에 이전에 배너그룹추가할 떄 생성한 코드명 입력 (모바일과 PC버전 모두 입력해야나옴)
+
 
 ## <span style="color:#ffa59c; font-weight:bold;">내용 편집</span>
 -보통 로고면 로고 모듈, footer면 footer 모듈을 사용하여 만들어 놨기 때문에 디자인 편집에서 마우스를 올리면 편집 버튼이 활성화 됨.
@@ -37,15 +41,28 @@ mac 기준, cafe24의 onsweb교과서 스킨 기준으로 기록
 -일반 -> 프로토콜 -> SFTP - SSH File Transfer Protocol 선택
 -호스트 : 아이디.ftp.cafe24.com
 >디자인 FTP : FTP주소 (ex: ecimg-ftp-c01.cafe24img.com)
+
 -포트 : 웹은 3822
 >디자인 FTP : SFTP 접속포트 
+
 -사용자 : 계정 ID
 비밀번호 : 기본설정에서 설정한 FTP비밀번호
 >디자인 FTP : 권한 신청시 설정한 비밀번호
+
 -연결 
 -덮어씌울 디자인 폴더에 백업한 디자인 폴더의 내용 복사 !preference 제외
 
+## <span style="color:#ffa59c; font-weight:bold;">이미지 경로</span>
+-대부분의 경우 파일질라에 이미지 업로드하는게 경로가 가장 깔끔함
+>ex) cafe24의 이미지 업로드를 사용한 경우 -> /sde_design/skin2/ons/img/f_kakao.svg 
+     파일질라에 이미지를 업로드한 경우 -> /ons/img/f_kakao.svg
 
 
-### 실행결과
-![result](/blog/assets/img/posting/array2.PNG)
+-웹 FTP인 경우 도메인빼고 상대 경로로 사용
+>https://onscorp.cafe24.com/img/003_SKIN.png => /img/003_SKIN.png
+
+-디자인 FTP인 경우 복사한 주소 그대로 사용
+>//ecimg.cafe24img.com/pg1455b35414800074/onswebedu/img/default_fixed_mo.png
+
+## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
+-문자열찾기가 현재화면에서 밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
