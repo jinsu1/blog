@@ -65,4 +65,17 @@ df-banner-code에 이전에 배너그룹추가할 떄 생성한 코드명 입력
 >//ecimg.cafe24img.com/pg1455b35414800074/onswebedu/img/default_fixed_mo.png
 
 ## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
--문자열찾기가 현재화면에서 밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
+-문자열찾기가 현재화면에서밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
+-소비자가 : 원가, 판매가 : 할인 등 적용한 정가
+-할인판매가 할인율 보이게하기 : 쇼핑몰설정 -> 상품 설정 -> 추가 설정 -> 팔인판매가 사용함, 표시문구 "[:DISCOUNT_PERCENT:]"(소비자가와 판매자가의 가격을 설정하면 알아서 계산됨)
+>표시문구 변수 ex)
+[:DISCOUNT_AMOUNT:] 할인 금액 표시
+[:DISCOINT_PERCENT:] 할인율(%) 표시
+[:MEMBER_GRADE] 접속한 회원의 등급명 표시
+
+
+## <span style="color:#ffa59c; font-weight:bold;">오류 수정</span>
+-js파일에서 파일질라에 업로드한 이미지 불러오는 오류(유지보수에 안좋아서 수정)
+-mouseover/mouseout 대신 mouseenter/mouseleave 사용 (child 요소에 이벤트 중첩되는 오류 개선)
+-예전작업된 jQuery에서 on메서드가 작동하지 않을 시 버전 확인. 1.4.4 이하에서는 .on대신 .live사용해야함
+
