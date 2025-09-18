@@ -70,6 +70,11 @@ df-banner-code에 이전에 배너그룹추가할 떄 생성한 코드명 입력
 
 ## <span style="color:#ffa59c; font-weight:bold;">게시판 설정</span>
 
+-새로운 형식의 게시판 목록이 필요해서 새폴더에 게시판을 만들었을 경우 경로가 기본경로로될건데 변경할 게시판 고유번호 속성을 갖는 값을 찾아서 경로를 바꾸어주는 스크립트
+```javascript
+$('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html');
+```
+
 #### 아코디언으로 바꾸기
 -게시판 관리에서 게시판 분류를 "상품"으로 바꾸면 "상품 상세페이지내 목록 펼침 여부"와 "본문읽기 설정"이 생김 "접기"와 "리스트 펼치기"로 바꾸고 css로 펼치기 버튼 수정
 -기본 게시판 레이아웃과는 다른 아코디언용 list.html을 만들 필요가 있음
@@ -77,9 +82,11 @@ df-banner-code에 이전에 배너그룹추가할 떄 생성한 코드명 입력
 -클래스명뒤에 1002 같은 보드 고유번호가 붙어있을텐데 그것도 맞는 번호로 다 바꾸어주어야함
 -아코디언을 펼칠 이벤트 버튼이 필요할텐데 스마트디자인 서포트 -> 게시판 목록 -> 사용가능한 변수 살펴보다보면 "{$action_content_spread}	내용 펼쳐보기 버튼 이벤트 (상품게시판 전용)" 이걸 넣으면 됨
 
-```
-$('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html');
-```
+## <span style="color:#ffa59c; font-weight:bold;">사이드바 고정</span>
+-position:sticky 사용, top, left 등 하나이상 기준 점을 잡아두면 알아서 부모 높이 안에서 움직인다.
+-header가 fixed되어있으면 header높이만큼 (ex)top:100px) 기준점을 잡아주면 된다.
+
+
 ## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
 -문자열찾기가 현재화면에서밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
 -소비자가 : 원가, 판매가 : 할인 등 적용한 정가
@@ -90,6 +97,8 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 [:MEMBER_GRADE] 접속한 회원의 등급명 표시
 
 -편집창 왼쪽 아래 스마트 디자인 서포트 모듈 목록 및 코드 활용하기
+
+-클래스 우선순위가 밀리면 덮어씌워진 클래스명에 하나를 더 추가해서 우선순위를 높이자(클래스 중첩 갯수가 많아지면 우선순위 점수가 높아짐)
 
 
 ## <span style="color:#ffa59c; font-weight:bold;">오류 수정</span>
