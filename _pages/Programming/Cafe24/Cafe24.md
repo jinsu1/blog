@@ -86,6 +86,13 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 -position:sticky 사용, top, left 등 하나이상 기준 점을 잡아두면 알아서 부모 높이 안에서 움직인다.
 -header가 fixed되어있으면 header높이만큼 (ex)top:100px) 기준점을 잡아주면 된다.
 
+## <span style="color:#ffa59c; font-weight:bold;">결제/span>
+-결제 페이지의 은행 선택 칸은 은행과 연동시 자동으로 채워진다.
+-틀은 바꾸지 않는 걸 권장하고 디자인은 이미 들어가있는 선택자들을 이용해서 css만 수정하도록 한다.
+
+## <span style="color:#ffa59c; font-weight:bold;">Swiper/span>
+-breakpoints는 모바일을 기준으로 잡음 1024면 이하가 아니라 이상을 말하는 것
+-슬라이드 사이의 간격은 margin 같은 것 보다 spacebetween을 통해서 잡으면 슬라이드가 밀려나가서 짤리는 걸 방지 할 수 있음 (어차피 margin잡아도 spacebetween이 우선으로 덮어씀)
 
 ## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
 -문자열찾기가 현재화면에서밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
