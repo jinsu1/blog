@@ -83,16 +83,26 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 -아코디언을 펼칠 이벤트 버튼이 필요할텐데 스마트디자인 서포트 -> 게시판 목록 -> 사용가능한 변수 살펴보다보면 "{$action_content_spread}	내용 펼쳐보기 버튼 이벤트 (상품게시판 전용)" 이걸 넣으면 됨
 
 ## <span style="color:#ffa59c; font-weight:bold;">사이드바 고정</span>
--position:sticky 사용, top, left 등 하나이상 기준 점을 잡아두면 알아서 부모 높이 안에서 움직인다.
+-position:sticky 사용, top, left 등 하나이상 기준점을 잡아두면 알아서 부모 높이 안에서 움직인다.
 -header가 fixed되어있으면 header높이만큼 (ex)top:100px) 기준점을 잡아주면 된다.
 
-## <span style="color:#ffa59c; font-weight:bold;">결제/span>
+## <span style="color:#ffa59c; font-weight:bold;">결제</span>
 -결제 페이지의 은행 선택 칸은 은행과 연동시 자동으로 채워진다.
 -틀은 바꾸지 않는 걸 권장하고 디자인은 이미 들어가있는 선택자들을 이용해서 css만 수정하도록 한다.
 
-## <span style="color:#ffa59c; font-weight:bold;">Swiper/span>
+## <span style="color:#ffa59c; font-weight:bold;">Swiper</span>
 -breakpoints는 모바일을 기준으로 잡음 1024면 이하가 아니라 이상을 말하는 것
 -슬라이드 사이의 간격은 margin 같은 것 보다 spacebetween을 통해서 잡으면 슬라이드가 밀려나가서 짤리는 걸 방지 할 수 있음 (어차피 margin잡아도 spacebetween이 우선으로 덮어씀)
+-css에 ".swiper-wrapper { transition-timing-function: linear !important; }"을 안넣어주면 swiper속성에서 autoSlide에 delay:0 으로 해도 딜레이걸린다.
+-슬라이드 이미지 크기가 다를 때 aspect-ratio: 1 / 1.4 속성을 사용하면 비율과 크기를 맞출 수 있다.
+-slide 클릭하면 swiper autoplay가 멈추는 현상은 이미지나 슬라이드에 pointer-events: none; 걸어주면 안되고 swiper-wrapper에 걸어줘야한다.
+
+## <span style="color:#ffa59c; font-weight:bold;">배너 높이 꽉채우기</span>
+-container에 height: 100%, 그 안에 배너를 담은 그릇에 height: clac(100vh - 헤더높이);, 그리고 배너이미지에 width, height 100%, object-fit:cover; 하면 이쁘게 딱 맞는다.
+
+## <span style="color:#ffa59c; font-weight:bold;">CSS</span>
+-.box:not(:last-child) : 마지막 자식요소를 제외하고- , first도 적용 가능
+-clamp(최솟값, vw, 최댓값)을 사용하면 크기를 조정할때 vw를 기준으로 가변되고 최솟값보다는 작아지지않고 최댓값보다는 커지지않는다. 반응형에서 미디어쿼리의 양을 줄이기위해 사용하면 좋을 것 같다.
 
 ## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
 -문자열찾기가 현재화면에서밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
@@ -113,3 +123,4 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 -mouseover/mouseout 대신 mouseenter/mouseleave 사용 (child 요소에 이벤트 중첩되는 오류 개선)
 -예전작업된 jQuery에서 on메서드가 작동하지 않을 시 버전 확인. 1.4.4 이하에서는 .on대신 .live사용해야함
 
+메인페이지 게시물 게시판 게시물 전부 보이는지 테스트용 넣 어서 확인 필요
