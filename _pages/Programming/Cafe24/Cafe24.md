@@ -1,5 +1,5 @@
 ---
-title: "[Cafe24] 기본내용 다루기"
+title: "[Cafe24] Cafe24 내용 정리"
 date: "2025-09-12"
 thumbnail: "/assets/img/thumbnail/cafe24.png"
 ---
