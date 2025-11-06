@@ -462,7 +462,7 @@ document.querySelectorAll('.menu-item').forEach((v, i) => {
 ```
 <br>
 
-## <span style="color:#1E90FF; font-weight:bold;">Accordion</span>
+## <span style="color:#1E90FF; font-weight:bold;">아코디언(Accordion)</span>
 
 ### HTML
 

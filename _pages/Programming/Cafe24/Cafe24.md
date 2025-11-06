@@ -1,6 +1,14 @@
 ---
 title: "[Cafe24] Cafe24 내용 정리"
 date: "2025-09-12"
+tags:
+    - css
+    - javascript
+    - html
+    - cafe24
+    - accordion
+    - 배너매니저
+    - 파일질라
 thumbnail: "/assets/img/thumbnail/cafe24.png"
 ---
 # <span style="color:#616161; font-weight:bold;">Cafe24</span>
@@ -9,7 +17,7 @@ mac 기준, cafe24의 onsweb교과서 스킨 기준으로 기록
 
 ## <span style="color:#ffa59c; font-weight:bold;">import</span>
 -주석 안에 " @import(/ons/html/main_bnr.html) " 이러한 형태로 생긴 부분은 해당 파일을 import 한다는 의미이므로, 연결을 끊을 때는 @ 하나만 삭제하시면 됩니다.
-(html 파일 연동: @import / css 파일 연동: @css / js파일 연동: @js)
+(html 파일 연동: @import / css 파일 연동: @css / js파일 연동: @js)-
 
 ## <span style="color:#ffa59c; font-weight:bold;">cafe24의 변수 사용</span>
 {$aaaa} 형태로 생긴 코드는 카페24 관리자페이지의 설정을 끌어와주는 변수입니다. 
@@ -23,6 +31,7 @@ mac 기준, cafe24의 onsweb교과서 스킨 기준으로 기록
 -배너 이미지 등 입력
 -프로젝트 코드 클릭 하여 코드 복사 > 메인레이아웃 및 공통레이아웃(기본) 배너매니저 코드 수정 > 메인페이지에서 배너 영역 파일열기(main_bnr.html) >
 df-banner-code에 이전에 배너그룹추가할 떄 생성한 코드명 입력 (모바일과 PC버전 모두 입력해야나옴)
+-배너사이즈는 원본 사이즈로 설정하고 css에서 고쳐야한다.
 
 
 ## <span style="color:#ffa59c; font-weight:bold;">내용 편집</span>
@@ -80,7 +89,17 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 -기본 게시판 레이아웃과는 다른 아코디언용 list.html을 만들 필요가 있음
 -파일 생성 후 자유게시판 목록을 복사해서 만들었다면 free 라는 폴더 경로를 새로만든 폴더 경로로 다 바꾸어주어야함
 -클래스명뒤에 1002 같은 보드 고유번호가 붙어있을텐데 그것도 맞는 번호로 다 바꾸어주어야함
--아코디언을 펼칠 이벤트 버튼이 필요할텐데 스마트디자인 서포트 -> 게시판 목록 -> 사용가능한 변수 살펴보다보면 "{$action_content_spread}	내용 펼쳐보기 버튼 이벤트 (상품게시판 전용)" 이걸 넣으면 됨
+-아코디언을 펼칠 이벤트 버튼이 필요할텐데 스마트디자인 서포트 -> 게시판 목록 -> 사용가능한 변수 살펴보다보면 "{$action_content_spread}	내용 펼쳐보기 버튼 이벤트 (상품게시판 전용)" 이걸 onclick에 넣으면 됨
+
+```javascript
+    $(document).ready(function() {
+    $('.subject.left.txtBreak').on('click', function() {
+        $('.faq_accordion_arrow').not($(this).find('.faq_accordion_arrow')).removeClass('rotated');
+        $(this).find('.faq_accordion_arrow').toggleClass('rotated');
+    });
+});
+```
+>아코디언 화살표 클릭시 회전하기 코드
 
 ## <span style="color:#ffa59c; font-weight:bold;">사이드바 고정</span>
 -position:sticky 사용, top, left 등 하나이상 기준점을 잡아두면 알아서 부모 높이 안에서 움직인다.
@@ -103,6 +122,51 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 ## <span style="color:#ffa59c; font-weight:bold;">CSS</span>
 -.box:not(:last-child) : 마지막 자식요소를 제외하고- , first도 적용 가능
 -clamp(최솟값, vw, 최댓값)을 사용하면 크기를 조정할때 vw를 기준으로 가변되고 최솟값보다는 작아지지않고 최댓값보다는 커지지않는다. 반응형에서 미디어쿼리의 양을 줄이기위해 사용하면 좋을 것 같다.
+-...으로 말줄임표 표시는 display: block; 일 때만 가능하다.
+>text-overflow: ellipsis;는 overflow: hidden; white-space: nowrap;과 width 지정과 세트로 사용
+
+-크롬 버전 137부터 css에서 if문이 사용 가능해졌다. (현재 버전 140) 
+```css
+padding: if(media(max-height: 1200px) :  0; else: 0 40px);
+```
+>높이 1200px 이하에서는 패딩을 0으로하고 그 밖에는 가로 양쪽 40px을 추가한다.
+관련 블로그 : https://sorto.me/docs/Web/CSS/Functions/if
+
+## <span style="color:#ffa59c; font-weight:bold;">스킨 설치</span>
+-스킨 백업 > 기본스킨에 업로드 > 배너매니저 세팅 > 상품 정보 표시 설정 세팅 (메인진열 세팅) > 하위메뉴 노출 확인 및 분류리스트 사용함 유무 > 게시판 및 썸네일, 이미지 경로 변경 > 엑박이미지(png 등) 넣어주기 > 상품 썸네일 크기 설정 모두 1000 
+
+-스킨 썸네일 다운로드 : 구글시트 - 온스계정 - 카페24 디자인센터 관리자페이지 (파트너) 사이트 로그인 -Designs - 쇼핑몰 디자인 - 스킨 선택 - 이미지 다운로드
+-사용자가 변경할 수 있을 것 같은건 안해도되고 개발자가 해야될 것 같은 것이나 어려운 것만 세팅
+-이미지경로, 썸네일 등 웹FTP인 경우 아래와 같이 경로 수정해야함
+```html
+<img src="/file_data/계정 아이디/{$real_filename}" alt="" onerror="this.src='{$image_small_src}'"/>
+```
+-디자인FTP인 경우 : //ecimg.cafe24img.com/pg고유넘버/운영자ID/file_data{$real_filename}
+>pg고유넘버 : pg고유넘버는 사이트마다 하나씩 정해져있으며 이미들어가있는 이미지를 (ex)로고) 개발자모드로보면 pg번호가 써있는 것이 있다.
+
+## <span style="color:#ffa59c; font-weight:bold;">javascript</span>
+-뒤에 붙일 때는 append를 사용하고 앞에 붙일 때는 before보다는 prepend를 사용 before은 화면을 줄였다 늘리면 여러개 붙는 버그가 있음
+>before은 태그 밖의 앞에 붙이지만 prepend와 append는 태그 안에서 앞뒤에 붙인다. 아래 코드 처럼하면 태그 밖에 붙일 수 있다
+
+```javascript
+salePriceEl.parent().prepend(sSaleText);
+```
+
+-자바스크립트로 로드 후 붙는 글자 없애기. 없어질때까지 반복 후 멈추기
+```javascript
+적립금 자바스크립트로 “원” 
+
+window.onload = function () {
+    let mileage = document.querySelector(".mypage_mileage");
+
+    let interval = setInterval(() => {
+        if (mileage && mileage.textContent.includes("원")) {
+            mileage.textContent = mileage.textContent.replace(/원/g, "");
+            clearInterval(interval); // 더 이상 반복 안 하도록 중단
+        }
+    }, 1); // 0.001초 간격으로 검사
+};
+```
 
 ## <span style="color:#ffa59c; font-weight:bold;">TIP</span>
 -문자열찾기가 현재화면에서밖에 못찾아서 vscode로 옮겨서 검색하던지 스크롤하면서 문자열찾기를 계속 눌러봐야함 (불편)
@@ -114,13 +178,12 @@ $('.boardListMenu li a[href$="board_no=3"]').attr('href','/board/faq/list.html')
 [:MEMBER_GRADE] 접속한 회원의 등급명 표시
 
 -편집창 왼쪽 아래 스마트 디자인 서포트 모듈 목록 및 코드 활용하기
-
 -클래스 우선순위가 밀리면 덮어씌워진 클래스명에 하나를 더 추가해서 우선순위를 높이자(클래스 중첩 갯수가 많아지면 우선순위 점수가 높아짐)
+-무한스크롤 구현 (스크롤시 마지막 게시물이 나올 때 까지 생겨남) 한번에 모든 게시물을 불러오고 초기 9개만 표시 후 스크롤이 맨 아래에 도착할 시 반복문으로 9개씩 추가적으로 보여지게 구현 페이지별 url이 다르다면 스크롤이 맨 아래로 갈 시 1페이지 밑에 2페이지를 붙여서 불러오는 식으로 구현도 가능
+
 
 
 ## <span style="color:#ffa59c; font-weight:bold;">오류 수정</span>
 -js파일에서 파일질라에 업로드한 이미지 불러오는 오류(유지보수에 안좋아서 수정)
 -mouseover/mouseout 대신 mouseenter/mouseleave 사용 (child 요소에 이벤트 중첩되는 오류 개선)
 -예전작업된 jQuery에서 on메서드가 작동하지 않을 시 버전 확인. 1.4.4 이하에서는 .on대신 .live사용해야함
-
-메인페이지 게시물 게시판 게시물 전부 보이는지 테스트용 넣 어서 확인 필요
