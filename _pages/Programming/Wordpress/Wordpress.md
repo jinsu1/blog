@@ -305,3 +305,4 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 
 ## <span style="color:#ffa59c; font-weight:bold;">반응형 모바일, 테블릿 기준점 변경</span>
 -왼족 상단 햄버거버튼 오른쪽 클릭 > 사이트 설정 > 레이아웃 > 중단점에서 기준점을 변경할 수 있다.
+-와이드 스크린이나 테블릿 가로, 모바일 가로도 설정할 수 있다.
