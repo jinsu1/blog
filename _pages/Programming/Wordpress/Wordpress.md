@@ -76,6 +76,8 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 
 ## <span style="color:#ffa59c; font-weight:bold;">메인페이지 - 입력 폼</span>
 -입력폼은 플러그인을 다운 받아야한다.
+
+#### WPform
 1.WPform 설치 후 활성화
 2.Ultimate Kit (Style) for WPform 설치 후 활성화
 3.왼쪽탭에 WPform이 생겼다. 들어가서 양식 새로추가
@@ -92,6 +94,10 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 14.워드프레스 편집기로 나가기 > 설정 > 일반에 관리자 이메일 주소가 있는데 입력 폼에서 문의하기를 하면 여기에 설정된 이메일로 전송된다.
 15.이메일을 변경하면 변경대기중 상태인데 이메일에 들어가서 확인만 눌러주면 바뀐다.
 
+#### Fluent Forms
+-Entries가 되어야 제출한 양식을 저장하고 목록을 나타낼 수 있는데 WPform은 유료고 여기는 무료이다.
+
+
 ## <span style="color:#ffa59c; font-weight:bold;">메인페이지 적용</span>
 -모양 > 사용자 정의 > 홈페이지 설정 > 최신글에 체크되어있는것을 정적페이지로 바꾸어주면 엘리멘터에서 수정한 디자인이 적용된다.
 
@@ -102,8 +108,7 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 -오른쪽 상단 공개 옆 화살표메뉴 > 템플릿으로 저장 > 다른 페이지 레이아웃 추가하고 + 옆 폴더 표시를 선택해서 템플릿을 불러올 수 있다.
 
 ## <span style="color:#ffa59c; font-weight:bold;">게시판</span>
-
-아래 글은 망보드 사용법이지만 갤러리 게시판에서 게시판 보기시 이미지는 안보인다 만약 표시해야한다면 The Post Grid / The Grid 플러그인 사용법을 알아보자
+-갤러리 게시판에 첨부파일은 썸네일 용으로 상세보기에서 안보인다. 상세보기에서는 글쓰기 오른쪽 상단에 사진 버튼을 클릭해서 첨부하면된다.
 
 #### 갤러리 게시판
 1.게시판은 플러그인 망보드(mangboard) 다운로드 후 활성화
@@ -143,7 +148,10 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 ```
 
 
-## <span style="color:#ffa59c; font-weight:bold;">백업, 복원 및 운영</span>
+## <span style="color:#ffa59c; font-weight:bold;">파비콘 설정</span>
+-모양 > 사용자 정의 > 사이트 아이덴티티 > 파비콘 업로드(최소 512x512px 이상 업로드 해야하며 자동으로 줄여준다.)
+
+## <span style="color:#ffa59c; font-weight:bold;">운영중인 도메인에 백업, 복원 및 운영</span>
 1.전체 사이트 백업 
 1)UpdraftPlus 플러그인 다운로드
 2)왼쪽 사이드메뉴에 추가된 플러그인으로 접속
@@ -186,3 +194,45 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 2.공유드라이버 > 웹개발팀/개발 > 워드프레스 홈페이지 백업 폴더에 사이트 백업파일 보관(전체 백업 파일과 템플릿 백업 파일)
 3.자주 사용되는 템플릿은 그 페이지만(또는 영역만) 별도로 분리하여 템플릿을 만들고 .json파일로 하나씩 저장해둘것. (그룹화와 같은개념)
 
+
+## <span style="color:#ffa59c; font-weight:bold;">Local 프로그램에 복원</span>
+1.https://localwp.com 에서 local 설치
+2.실행 후 Create a new site 
+3.사이트 이름 짓기
+4.나머지는 기본값, preferred로 만들기
+5.php버전 7.4.x로 설정 (카페24 워드프레스가 보통 이 버전임)
+6.local에 WP admin으로 새로 생성된 사이트의 관리자 페이지 접속
+7.UpdraftPlus 설치
+8.모든 백업 파일 업로드 후 복원
+9.사이트명.local로 사이트이름 변경
+10.망보드 사용이라면 게시판 추가해서 똑같은 이름으로 만들어주기(게시물이 필요하다면 호스팅센터에서 따로 DB백업해야함)
+
+## <span style="color:#ffa59c; font-weight:bold;">SEO 설정</span>
+#### 구글
+1.설정 > 읽기 > "검색 엔진이 이 사이트를 검색하는 것을 차단" 체크 해제 확인 
+2.워드프레스에서 Yoast SEO 플러그인 설치
+3."처음 구성" 작성 
+4.일반 > 사이트 표현 > 조직이름, 대체 조직 이름 작성(검색될이름)
+5.Yoast SEO > 일반 > 사이트 연결 > 구글은 구글서치콘솔 > add property > URL prefix > url 입력 > html tag > 코드 복사 후 사이트 연결에 다시 붙여넣기 > verify 
+6.구글 서치 콘솔 > 사이트맵 > https://kkioun.mycafe24.com/sitemap_index.xml 입력 
+7.couldn't fetch 가 fetch로 바뀌면 성공
+
+#### 네이버
+1.네이버 서치어드바이저에서 웹마스터 도구로 접속
+2.사이트 등록에 url넣고 HTML 태그에있는 메타 태그 복사
+3.워드프레스에서 WPCode 플러그인 다운로드
+4.코드 스니펫 탭 > 헤더 및 푸터 > 헤더에 복사한 것 붙여넣기
+5.네이버 서치어드바이저에서 소유확인 클릭
+6.등록된 사이트 목록에서 링크 클릭하여 접속 
+7.요청 > 사이트맵 제출 > 사이트맵 URL 입력에 https://내도메인/sitemap.xml 입력 
+
+#### RSS 제출
+-구글은 자동으로 되므로 제출할 필요x
+-네이버는 네이버 서치어드바이저 > 요청 > RSS 제출 > RSS URL 입력에 https://kkioun.mycafe24.com/feed 입력 후 제출
+
+## <span style="color:#ffa59c; font-weight:bold;">CSS 수정 크게보기/span>
+1.Custom CSS and JS 플러그인 다운로드 후 활성화
+2.왼쪽 탭에 메뉴 생성됨
+3.Add Custom CSS 클릭
+4.Permalink 에서 파일 이름 변경 가능
+5.내용 작성 후 공개
