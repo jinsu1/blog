@@ -25,6 +25,8 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 6.플러그인 > 플러그인 일괄 업데이트 > 플러그인 추가 > 엘리멘터 설치 후 활성화
 7.페이지 > 모든 페이지 > 기본 페이지들 일괄동작:휴지통으로 이동 
 
+*사이트 속도향상을 위해 안쓰는 테마, 글, 페이지 등 기본으로 깔려있는 것 삭제 
+
 
 ## <span style="color:#ffa59c; font-weight:bold;">GNB구성(header, footer)</span>
 1.워드프레스는 페이지가 있어야 GNB를 설정할 수 있기때문에 페이지부터 다 만들어야한다.
@@ -40,6 +42,52 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 1.모양 > 사용자 정의 > 사이트 제목 및 로고 > 로고 등록, 로고 폭 조정 > 사이트 제목 삭제 또는 사이트 제목 가시성 PC, Teblet, Mobile 모두 해제하여 가리기 
 2.주메뉴 > 서브메뉴(펼쳐짐) 폭 변경 > 아이템 디바이더(서브메뉴에 밑줄) 추가 여부 > 상단 탭의 DESIGN 
 > 메뉴 호버 스타일 지정, 상단 오프셋 지정(하위메뉴와 대메뉴사이의 간격), 하위 메뉴 애니메이션 지정, border-radius 지정, 테두리 지정, 메뉴 색상 순서대로 기본, 오버 색상, 액티브 색상
+3.아스트라 경우 헤더 고정이 유료이다. 무료로 사용하려면 Sticky Menu & Sticky Header 플러그인을 다운받으면 쉽게 할 수 있다.
+4.설치 후 왼쪽 탭메뉴 설정에 sticky menu라는 서브메뉴가 생긴다. Sticky Element: (required) 여기에 헤더의 아이디나 클래스를 입력해주면 끝이다.
+>-아스트라의 경우 ".site-header"를 입력하면 된다. 그 외에도 고정메뉴와 상단 거리 조정, 관리자 툴바 가리는 문제 해결, 정해진 픽셀 이하, 이상에서 고정해제 등 옵션이 있다.
+5.WP Mega Menu 메가 메뉴 플러그인
+
+-상단 투명 헤더 코드(아스트라)
+-모양 > 사용자 정의 > 헤더 > 투명 헤더 > 전체 사이트 적용 설정 후 메인에서만 동작하도록 코드 추가 (아스트라는 메인페이지에서 .home이라는 클래스 자동 생성되므로 이용)
+
+```css
+/* 최상단: 투명 */
+.home.ast-theme-transparent-header .ast-main-header-wrap {
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 스크롤 후: 흰색 배경 + 그림자 */
+.home .ast-main-header-wrap.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 서브 페이지는 항상 흰 배경 */
+body:not(.home) .ast-main-header-wrap {
+    background-color: #ffffff;
+    box-shadow: none;
+}
+```
+
+```js
+document.addEventListener("DOMContentLoaded", function () {
+
+    // 홈이 아니면 아무것도 안 함
+    if (!document.body.classList.contains("home")) return;
+
+    const header = document.querySelector(".ast-main-header-wrap");
+    if (!header) return;
+
+    function toggleHeaderBg() {
+        header.classList.toggle("scrolled", window.scrollY > 10);
+    }
+
+    toggleHeaderBg();
+    window.addEventListener("scroll", toggleHeaderBg);
+});
+```
 
 ## <span style="color:#ffa59c; font-weight:bold;">Footer(푸터)</span>
 1.푸터는 기본으로 Copyright만 있는데 컨텐츠 하단 Copyright옆 여백을 클릭하면 엘리먼트 삽입 창이 뜬다. footer menu 클릭하여 추가
@@ -228,9 +276,32 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 -구글은 자동으로 되므로 제출할 필요x
 -네이버는 네이버 서치어드바이저 > 요청 > RSS 제출 > RSS URL 입력에 https://kkioun.mycafe24.com/feed 입력 후 제출
 
-## <span style="color:#ffa59c; font-weight:bold;">CSS 수정 크게보기/span>
+## <span style="color:#ffa59c; font-weight:bold;">CSS 넣기</span>
+-CSS 추가는 가급적 사용하지 않는게 좋아보임 (테마 업데이트시 삭제위험, 좁은 공간 등)
+-요소 + 에 html코드를 선택하여 원하는 위치에 코드박스를 넣고 css를 입력 > 적용할 대상에 클래스명 추가해주기(고급설정에서 넣어도되고 텍스트라면 직접 코드안에 텍스트 형태로 작성
+
+## <span style="color:#ffa59c; font-weight:bold;">CSS 수정 크게보기</span>
 1.Custom CSS and JS 플러그인 다운로드 후 활성화
 2.왼쪽 탭에 메뉴 생성됨
 3.Add Custom CSS 클릭
 4.Permalink 에서 파일 이름 변경 가능
 5.내용 작성 후 공개
+
+## <span style="color:#ffa59c; font-weight:bold;">폰트 추가하기</span>
+-파일을 다운로드하여 사용하는게 통상적
+1.폰트 파일 다운로드 : 다운로드파일은 woff2가 용량이 더 압축되어  좋고 subset이 붙은건 한번 더 불필요한  텍스트를 걸러낸 것이므로 woff2-subset사용
+2.Custom Fonts – Host Your Fonts Locally 플러그인 다운로드 > 모양에 custom fonts 메뉴 생성
+3.폰트파일을 업로드해야하는데 woff타입은 업로드가 불가하므로 WP Extra File Types 플러그인 
+4.설정 > Extra File Types > 맨 상단 Check only file extensions 체크 > woff, woff2 등 업로드할 확장자 체크 > 변경사항 저장 => 업로드 가능
+5.모양 > Custom Fonts > Add New Font > 폰트네임 설정 > choose file > 파일업로드에 굵기별 파일 업로드 > 원하는 두께 파일 선택 > 해당하는 font-weight 선택 > add Font Variation 선택하여 모든 굵기 추가 > save font > elementor 편집기의 타이포그래피에 추가됨 
+6.사용자 정의 > 기본 글꼴 설정 가능하고, 엘리멘터편집기에서 전역 글꼴 톱니버튼 클릭하여 사용자 정의 글꼴을 추가할 수 있다.
+
+## <span style="color:#ffa59c; font-weight:bold;">영역 복사</span>
+-전체 복사를 해도 되지만 이미 이미지나 텍스트 등을 넣은 상태라면 일반 복사를 한뒤에 오른쪽 클릭 > 붙여넣기 스타일 기능으로 스타일만 복사하면 된다.
+
+## <span style="color:#ffa59c; font-weight:bold;">반응형인데 구조 다를 때</span>
+-PC와 MO에서 컨테이너 배치가 다를 때 똑같은 영역을 두개 만들어서 PC는 모바일에서 안보이게, MO는 PC에서 안보이게 두 개 배치하자
+-카페24의 RWB, RTMB 두 개 넣는것과 동일한 기능
+
+## <span style="color:#ffa59c; font-weight:bold;">반응형 모바일, 테블릿 기준점 변경</span>
+-왼족 상단 햄버거버튼 오른쪽 클릭 > 사이트 설정 > 레이아웃 > 중단점에서 기준점을 변경할 수 있다.
