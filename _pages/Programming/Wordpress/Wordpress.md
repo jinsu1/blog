@@ -50,7 +50,7 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 6.디자인 설정에서 색상 및 여백을 설정한다.
 7.general로 돌아와서 내부 요소 레이아웃 : row, column 정렬 선택, 폭은 레이아웃 1280px, 또는 전체폭 선택, 높이는 푸터의 전체 높이, 정렬을 선택한다.
 
-## <span style="color:#ffa59c; font-weight:bold;">메인페이지 - 배너</span>
+## <span style="color:#ffa59c; font-weight:bold;">배너</span>
 1.수정할 페이지로 접속하여 엘리멘터 편집기를 연다.
 2.배너 같은 경우 위젯 + 버튼을 클릭하여 플렉스박스, 원하는 형태를 선택한다.
 3.왼쪽 상단 위 요소 추가 + 버튼을 클릭하여 타이틀, 텍스트 박스 등을 넣는다.
@@ -61,7 +61,7 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 8.레이아웃으로 돌아가서 최소 높이: 배너높이, 콘텐츠 양쪽 맞춤 : 정렬 위치 등을 설정한다.
 9.배너 텍스트 영역을 선택해서 스타일 > 텍스트 색상 > 지구본모양은 내가 설정한 전역 색상 목록을 볼 수 있다.
 
-## <span style="color:#ffa59c; font-weight:bold;">메인페이지 - 좌우 분리 박스</span>
+## <span style="color:#ffa59c; font-weight:bold;">좌우 분리 컨테이너</span>
 1.컨테이너를 좌, 우 나누어진 요소 추가
 2.각 영역에 요소 추가
 3.각 영역 내부에 마우스 오버하면 회색테두리 생성 => 회색 영역 레이아웃 수정, 콘텐츠에 오버하면 핑크색 테두리 생성 => 회색 영역 안 콘텐츠 내용 수정
@@ -69,12 +69,12 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 5.플렉스 박스로 레이아웃 골라서 이미지 삽입
 6.스타일 > 이미지 편집 > 마우스 오버 > 불투명: 1 > 필터 : 흐리기, 밝기 등 조정 > 전환기간(딜레이) > 마우스 오버 애니매이션 추가 > 그림자, 테두리 모서리 설정
 
-## <span style="color:#ffa59c; font-weight:bold;">메인페이지 - 중단 중단</span>
+## <span style="color:#ffa59c; font-weight:bold;">텍스트 여백&이미지 위에 텍스트</span>
 -텍스트는 스타일 > 단락 간격 > 0으로 해야 위아래 여백이 사라진다.
 -스타일 > 고정 여부 > 고정으로하면 스크롤해도 이미지는 그대로 멈춰있는 듯이 보인다.
 -배경위로 텍스트를 올리는건 이미지를 배경으로 넣으면되고, 게시물처럼 썸네일 위에 텍스트를 올리는건 여백을 -로 입력한다. 모바일과 테블릿은 %로 해야 안틀어진다
 
-## <span style="color:#ffa59c; font-weight:bold;">메인페이지 - 입력 폼</span>
+## <span style="color:#ffa59c; font-weight:bold;">입력 폼</span>
 -입력폼은 플러그인을 다운 받아야한다.
 
 #### WPform
@@ -169,12 +169,10 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 5)설정 > 고유주소 > 그대로 바꾸지않고 저장 (자동으로 구조를 새로 생성해줌)
 
 3.템플릿 백업
-
 1)전체 백업 : 도구 > 내보내기 > 나의 템플릿 (.xml확장자)
 2)한 템플릿만 백업 : 템플릿 > 내보내기 템플릿 (.json확장자)
 
 4.템플릿 복원
-
 1)전체 복원 : 도구 > 가져오기 > WordPress 지금 설치 > 가져오기 도구 실행 > 파일선택 후 가져오기
 2)한 템플릿만 복원 : 템플릿가져올 페이지 생성 > elementor 편집기 > 레이아웃에서 폴더클릭 (템플릿가져올떄처럼) > 오른쪽 상단위 업로드 아이콘 클릭 > json파일 올리기
 
