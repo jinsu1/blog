@@ -48,45 +48,50 @@ thumbnail: "/assets/img/thumbnail/Wordpress_logo.png"
 5.WP Mega Menu 메가 메뉴 플러그인
 
 -상단 투명 헤더 코드(아스트라)
--모양 > 사용자 정의 > 헤더 > 투명 헤더 > 전체 사이트 적용 설정 후 메인에서만 동작하도록 코드 추가 (아스트라는 메인페이지에서 .home이라는 클래스 자동 생성되므로 이용)
 
 ```css
-/* 최상단: 투명 */
-.home.ast-theme-transparent-header .ast-main-header-wrap {
-    background-color: transparent;
+/* 메인페이지에서만 헤더 투명 */
+body.home .site-header {
+    position: fixed;
+    width: 100%;
+    background: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 999;
 }
 
-/* 스크롤 후: 흰색 배경 + 그림자 */
-.home .ast-main-header-wrap.scrolled {
+body.home .ast-primary-header-bar {background-color:transparent;}
+body.home .main-header-bar,
+body.home .ast-above-header-bar {border:none;}
+
+/* 스크롤 시 헤더 스타일 */
+body.home .site-header.scrolled {
     background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* 서브 페이지는 항상 흰 배경 */
-body:not(.home) .ast-main-header-wrap {
-    background-color: #ffffff;
-    box-shadow: none;
+/* 관리자바 있을 때 보정 */
+.admin-bar body.home .site-header {
+    top: 32px;
 }
 ```
-
+-WP Headers and Footers 플러그인의 Script in Footer에 추가
 ```js
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (!document.body.classList.contains('home')) return;
 
-    // 홈이 아니면 아무것도 안 함
-    if (!document.body.classList.contains("home")) return;
-
-    const header = document.querySelector(".ast-main-header-wrap");
+    const header = document.querySelector('.site-header');
     if (!header) return;
 
-    function toggleHeaderBg() {
-        header.classList.toggle("scrolled", window.scrollY > 10);
-    }
-
-    toggleHeaderBg();
-    window.addEventListener("scroll", toggleHeaderBg);
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 });
+</script>
 ```
 
 ## <span style="color:#ffa59c; font-weight:bold;">Footer(푸터)</span>
@@ -194,6 +199,22 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 *이 부분은 메인에 노출할때 최근 게시물만 뽑는 용도이다
 최근 게시물: [mb_latest name="board1" title="board1" list_size="5" style=""]
 ```
+
+#### 망보드 커스텀
+-망보드 메뉴얼 > 커뮤니티에 글이 많이 올라와있다.
+1. 일반 자료실 게시판에서 조회수를 안보이게 하는 숏코드
+>[mb_board name="board1" hide_list="fn_hit"  title_format="name_date"]
+
+2. 일반 자료실 게시판에서 작성자 이름을 안보이게 하는 숏코드
+
+>[mb_board name="board1" hide_list="fn_user_name"  title_format="date_hit" hide_view="fn_user_name"]
+
+3. 유료 자료실 게시판에서 조회수를 안보이게 하는 숏코드
+>[mb_board name="board1" hide_list="fn_hit"  title_format="name_date" view_title_format="name__date"]
+
+-게시판 항목 넓이 조정
+>파일질라에 접속 후 mangboard/skins/bbs_basic/includes/skin-model.php 에서 넓이를 조정할 수 있다.
+
 
 
 ## <span style="color:#ffa59c; font-weight:bold;">파비콘 설정</span>
@@ -306,3 +327,26 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 ## <span style="color:#ffa59c; font-weight:bold;">반응형 모바일, 테블릿 기준점 변경</span>
 -왼족 상단 햄버거버튼 오른쪽 클릭 > 사이트 설정 > 레이아웃 > 중단점에서 기준점을 변경할 수 있다.
 -와이드 스크린이나 테블릿 가로, 모바일 가로도 설정할 수 있다.
+
+## <span style="color:#ffa59c; font-weight:bold;">플러그인</span>
+-All-in-One WP Migration and Backup : 백업
+-UpdraftPlus - 백업/복원 : 백업
+-Child Theme Configurator : 차일드 테마
+-Code Snippets : php등 코드 편집
+-Custom Fonts : 다운로드 폰트 적용
+-WP Extra File Types : 파일확장자 추가 (폰트 업로드 등)
+-Elementor Website Builder : 편집기
+-Fluent Forms : 입력폼 생성
+-MangBoard WP : 게시판
+-Simple Custom CSS and JS : css, js 큰 창 수정
+Sticky Menu & Sticky Header : 헤더 고정
+-Ultimate Kit ( Styler ) for WPForms : WPform 레이아웃 수정 등
+-Yoast SEO :  SEO 설정
+-WP Headers And Footers : head, footer, body 전역코드 삽입가능 *goat
+-Smart Slider 3 : 배너 스와이퍼 등 배너마다 다른 텍스트 가능, 프로그래스바 커스텀 가능
+-MarqueeX – Smooth Marquee Slider & News ticker for Gutenberg & Elementor : 흘러가는 슬라이드쇼
+-Easy Updates Manager : 자동 업데이트 관리 
+
+## <span style="color:#ffa59c; font-weight:bold;">style</span>
+-style은 전역은 custom CSS and JS에, 페이지별은 엘리멘터편집창에 HTML코드에 스타일 태그 넣을 것. 그래야 백업했을때 스타일도 같이 따라온다
+
