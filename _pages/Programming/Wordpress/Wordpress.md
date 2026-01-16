@@ -215,6 +215,33 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 -게시판 항목 넓이 조정
 >파일질라에 접속 후 mangboard/skins/bbs_basic/includes/skin-model.php 에서 넓이를 조정할 수 있다.
 
+-검색 버튼 텍스트 수정. 경로 : mangboard/skins/bbs_basic/list.php
+
+```php
+<?php echo mbw_get_btn_template(array(
+	"name"=>"Search",
+	"onclick"=>"sendSearchData()",
+	"class"=>"btn btn-default btn-search margin-left-5"
+)); ?>
+
+위 코드를 아래코드로 변경
+
+<button type="button"
+	class="btn btn-default btn-search margin-left-5"
+	onclick="sendSearchData()">
+	찾기
+</button>
+
+//th 날짜 -> 작성일로 바꾸기 
+//     $list_data["title"] = str_replace("날짜", "작성일", $list_data["title"]); 이것만 추가
+<?php
+    if(intval(mbw_get_board_option("fn_use_list_title"))==1 && mbw_get_vars("device_type")!="mobile" || mbw_get_board_option("fn_board_type")=="admin" || intval(mbw_get_board_option("fn_use_list_title"))==2){
+        $list_data["title"] = str_replace("날짜", "작성일", $list_data["title"]);
+        echo "<thead><tr>".$list_data["title"]."</tr></thead>";
+    }
+?>
+```
+
 
 
 ## <span style="color:#ffa59c; font-weight:bold;">파비콘 설정</span>
@@ -244,6 +271,11 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 4.템플릿 복원
 1)전체 복원 : 도구 > 가져오기 > WordPress 지금 설치 > 가져오기 도구 실행 > 파일선택 후 가져오기
 2)한 템플릿만 복원 : 템플릿가져올 페이지 생성 > elementor 편집기 > 레이아웃에서 폴더클릭 (템플릿가져올떄처럼) > 오른쪽 상단위 업로드 아이콘 클릭 > json파일 올리기
+
+#### 망보드 백업 및 복원
+-망보드는 자동백업이 안된다. myphpadmin도 카페24에서 서비스 종료해서 접근 불가하다.
+-아래 망보드 커뮤니티 링크로가면 설명이 잘 나와있다. updraftplus 및 올인원 WP백업에 망보드 포함시키는법.
+>https://www.mangboard.com/tip/?board_name=c_tip&search_field=all&search_text=%EB%B0%B1%EC%97%85&vid=66 
 
 ***주의사항***
 1.테마가 다르면 레이아웃이 꺠질 수 있음 (현재 아스트라면 아스트라 테마에서하는게 안전)
@@ -339,13 +371,14 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 -Fluent Forms : 입력폼 생성
 -MangBoard WP : 게시판
 -Simple Custom CSS and JS : css, js 큰 창 수정
-Sticky Menu & Sticky Header : 헤더 고정
+-Sticky Menu & Sticky Header : 헤더 고정
 -Ultimate Kit ( Styler ) for WPForms : WPform 레이아웃 수정 등
 -Yoast SEO :  SEO 설정
 -WP Headers And Footers : head, footer, body 전역코드 삽입가능 *goat
 -Smart Slider 3 : 배너 스와이퍼 등 배너마다 다른 텍스트 가능, 프로그래스바 커스텀 가능
 -MarqueeX – Smooth Marquee Slider & News ticker for Gutenberg & Elementor : 흘러가는 슬라이드쇼
 -Easy Updates Manager : 자동 업데이트 관리 
+-WPFront Notification Bar : 전체, 페이지별 fixed 기능
 
 ## <span style="color:#ffa59c; font-weight:bold;">style</span>
 -style은 전역은 custom CSS and JS에, 페이지별은 엘리멘터편집창에 HTML코드에 스타일 태그 넣을 것. 그래야 백업했을때 스타일도 같이 따라온다
