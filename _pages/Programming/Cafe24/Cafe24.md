@@ -380,3 +380,18 @@ window.onload = function () {
 -js파일에서 파일질라에 업로드한 이미지 불러오는 오류(유지보수에 안좋아서 수정)
 -mouseover/mouseout 대신 mouseenter/mouseleave 사용 (child 요소에 이벤트 중첩되는 오류 개선)
 -예전작업된 jQuery에서 on메서드가 작동하지 않을 시 버전 확인. 1.4.4 이하에서는 .on대신 .live사용해야함
+
+
+## <span style="color:#ffa59c; font-weight:bold;">워드프레스 기능 뺀 미리보기용 사이트 만들기</span>
+1.simply static 플러그인 다운로드
+2.setting - general 에서 Relative Path와 바로아래 PATH 입력 : https://jinsu1.github.io/demo1 
+3.셋팅 맨아래 Exclude에 아래 내용 넣고 저장
+```
+/wp-admin
+/wp-login.php
+/wp-json
+/xmlrpc.php
+```
+4.Generate 눌러서 zip파일 저장
+5.vscode로 열어서 라이브 서버 확인해보고 github 레포에 업로드
+6.깃허브 페이지 제작 후 접속. 깨진다면 경로문제!
