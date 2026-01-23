@@ -395,3 +395,10 @@ window.onload = function () {
 4.Generate 눌러서 zip파일 저장
 5.vscode로 열어서 라이브 서버 확인해보고 github 레포에 업로드
 6.깃허브 페이지 제작 후 접속. 깨진다면 경로문제!
+
+## <span style="color:#ffa59c; font-weight:bold;">git push ssh로 계정 변경</span>
+-ssh-keygen -t ed25519 -C "onsweb.shopify@gmail.com" : ssh 키 생성
+-cat ~/.ssh/id_ed25519.pub : 공개키 복사
+-github 에 ssh and GPG jeys > New SSH key 에 붙여넣기
+-git remote add origin git@github.com:onsshopi/broommasterclean.git : 원격 저장소 변경
+-푸쉬 진행
