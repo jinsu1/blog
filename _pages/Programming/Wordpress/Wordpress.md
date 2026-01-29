@@ -94,6 +94,103 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 ```
 
+#### 투명헤더 다른 방법
+-사용자 정의에 투명헤더는 off
+-WP Headers and Footers 에 코드추가
+```css
+<style>
+/* ===================== 헤더 ===================== */
+body .site-header {
+    position: fixed;
+    width: 100%;
+    background: transparent;
+    /*transition: background-color 0.3s ease, box-shadow 0.3s ease;*/
+    z-index: 999;
+}
+
+body .ast-primary-header-bar {background-color:transparent;}
+body .main-header-bar,
+body .ast-above-header-bar {border:none;}
+
+/* 스크롤 시 헤더 스타일 */
+body .site-header.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.site-header {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+        opacity 0.2s ease, 
+        transform 0.2s ease, 
+        background-color 0.2s ease, 
+        box-shadow 0.2s ease;
+    pointer-events: auto;
+}
+
+/* 서서히 사라짐 */
+.site-header.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+	
+.site-header:hover {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto !important;
+}
+	
+/* 스크롤 시 흰 배경 */
+.site-header.scrolled {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+```
+
+```js
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function () {
+        const currentScrollY = window.scrollY;
+
+        // 1️⃣ 배경 처리
+        if (currentScrollY > 50) {
+            header.classList.add('scrolled'); // 흰색 배경
+        } else {
+            header.classList.remove('scrolled'); // 맨 상단 투명
+        }
+
+        // 2️⃣ 최상단이면 항상 보이기
+        if (currentScrollY <= 0) {
+            header.classList.remove('fade-out');
+            lastScrollY = currentScrollY;
+            return;
+        }
+
+        // 3️⃣ 스크롤 방향에 따른 슬라이딩
+        if (currentScrollY < lastScrollY) {
+            // 위로 스크롤 → 헤더 숨김
+            header.classList.add('fade-out');
+        } else {
+            // 아래로 스크롤 → 헤더 보임
+            header.classList.remove('fade-out');
+        }
+
+        lastScrollY = currentScrollY;
+    });
+});
+</script>
+```
+
 ## <span style="color:#ffa59c; font-weight:bold;">Footer(푸터)</span>
 1.푸터는 기본으로 Copyright만 있는데 컨텐츠 하단 Copyright옆 여백을 클릭하면 엘리먼트 삽입 창이 뜬다. footer menu 클릭하여 추가
 2.추가된 콘텐츠 박스를 드래그하여 순서를 바꿀 수 있다.
@@ -381,4 +478,3 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 
 ## <span style="color:#ffa59c; font-weight:bold;">style</span>
 -style은 전역은 custom CSS and JS에, 페이지별은 엘리멘터편집창에 HTML코드에 스타일 태그 넣을 것. 그래야 백업했을때 스타일도 같이 따라온다
-
