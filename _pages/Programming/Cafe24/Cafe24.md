@@ -387,9 +387,19 @@ window.onload = function () {
 ## <span style="color:#ffa59c; font-weight:bold;">상품분류 중분류에 소분류 표시하기</span>
 -중분류 페이지 내에 소분류를 표시해야 할때 전체상품의 $count위에 $cate_no = 00 처럼 소분류를 생성했을때 만들어진 링크에서 cate_no를 입력하면 중분류에 해당 번호의 상품만 표시 가능하다.
 -중분류 하나에 소분류 여러개를 표시할 수도 있다.
--gnb에 표시하고 싶지않으면 "표시안함"으로 설정해도 상품은 나온다.
+-gnb에 표시하고 싶지않으면 "표시안함"으로 설정해도 상품은 나온다.(대신 상품 검색이 안된다.) 검색이 되려면 gnb에 상품분류를 모듈을 사용하지 않고 하드코딩해야함.
 -대신 상품분류 페이지를 통합으로 사용하고 중분류가 여러개라면 상품분류 페이지를 중분류 개수 만큼 만들어서 별도로 관리하며 링크는 하드코딩으로 넣어야하는게 현재로썬 최선이다.
 ```html
 $cate_no= 69
 $count = 12
+```
+
+## <span style="color:#ffa59c; font-weight:bold;">상품분류 상품 링크 변경하기</span>
+-상품링크를 상품상세가 아닌 다른곳에 연결하고싶거나, 외부링크로 연결하고 싶을때 product_list.html 의 href="{$summary_desc}"로 상품요약 변수로 설정하면 상품요약에 입력한 링크로 연결된다.
+
+```html
+<div class="thumbnail">        
+    <a href="{$summary_desc}"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" loading="lazy" width="100%" height="100%"><img src="{$image_small}" id="{$image_small_id}" alt="{$seo_alt_tag}" class="hoverImg"/><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span>
+    </a>        
+</div>
 ```
