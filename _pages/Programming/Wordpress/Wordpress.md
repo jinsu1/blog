@@ -453,8 +453,20 @@ height="360px" tablet_height="250px" mobile_height="200px" style=""]
 -카페24의 RWB, RTMB 두 개 넣는것과 동일한 기능
 
 ## <span style="color:#ffa59c; font-weight:bold;">반응형 모바일, 테블릿 기준점 변경</span>
--왼족 상단 햄버거버튼 오른쪽 클릭 > 사이트 설정 > 레이아웃 > 중단점에서 기준점을 변경할 수 있다.
--와이드 스크린이나 테블릿 가로, 모바일 가로도 설정할 수 있다.
+-code snippet(스니펫) 플러그인에서 파일 추가 > php > breakpoint(제목 자유) 아래 코드 붙이면 브레이크 포인트가 변경된다.
+
+```php
+add_filter( 'astra_mobile_breakpoint', function() {
+    return 1024;
+});
+
+add_filter( 'astra_tablet_breakpoint', function() {
+    return 1024;
+});
+```
+<!--왼쪽 상단 햄버거버튼 오른쪽 클릭 > 사이트 설정 > 레이아웃 > 중단점에서 기준점을 변경할 수 있다.
+와이드 스크린이나 테블릿 가로, 모바일 가로도 설정할 수 있다.-->
+
 
 ## <span style="color:#ffa59c; font-weight:bold;">플러그인</span>
 -All-in-One WP Migration and Backup : 백업
