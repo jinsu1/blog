@@ -522,3 +522,9 @@ add_filter( 'astra_tablet_breakpoint', function() {
 -다시 다른 계정으로 바꿔서 올리려면 git remote set-url origin https://github.com/jinsu1/grouping1.git
 
 -git 기존 정보 완전히 삭제 rm -rf .git
+
+
+#### 기존 로그인 정보 삭제 후 다른 계정 업로드
+-윈도우 자격증명에서 깃허브 삭제후 
+-git remote set-url origin https://github.com/jinsu1/grouping1.git
+-git push origin main > 홈페이지 로그인
